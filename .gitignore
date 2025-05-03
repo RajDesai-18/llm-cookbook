@@ -1,0 +1,52 @@
+# ------------------------------
+# Python Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+
+# Environment Variables
+.env
+.env.*
+
+# Logs and Debug
+*.log
+
+# Unit Test Cache
+.cache/
+.pytest_cache/
+
+# OS and Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# ML Models & Vector Files
+models/
+*.h5
+*.pt
+*.pth
+*.joblib
+*.pkl
+*.bin
+
+# Hugging Face Transformers Cache
+~/.cache/huggingface/
+~/.huggingface/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Data Artifacts
+*.csv
+*.tsv
+*.json
+*.db
+
+# Temp files
+*.bak
+*.swp
