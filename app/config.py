@@ -1,18 +1,29 @@
 import os
-from dotenv import load_dotenv
+
+# from dotenv import load_dotenv
 from pathlib import Path
 
-# Load environment variables from .env file
+# — load .env from project root (if you have one) ——
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(dotenv_path=BASE_DIR / ".env")
+# load_dotenv(dotenv_path=BASE_DIR / ".env")
+
 
 class Settings:
-    PROJECT_NAME: str = "AI-Based Recipe Generator"
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY")
+    PROJECT_NAME: str = "LLM CookBook"
+    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
 
-    # You can add more configs here later (e.g., model paths, thresholds, etc.)
+    # your data files
     DATA_PATH: str = str(BASE_DIR / "app" / "data" / "recipes.csv")
-    EMBEDDING_CACHE_PATH: str = str(BASE_DIR / "app" / "data" / "precomputed_embeddings.pkl")
-    SUBSTITUTION_DICT_PATH: str = str(BASE_DIR / "app" / "data" / "substitution_dict.json")
+    EMBEDDING_CACHE_PATH: str = str(
+        BASE_DIR / "app" / "data" / "precomputed_embeddings.pkl"
+    )
+    SUBSTITUTION_DICT_PATH: str = str(
+        BASE_DIR / "app" / "data" / "substitution_dict.json"
+    )
+
+    # any other constants
+    OLLAMA_URL: str = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
+    MODEL_NAME: str = os.getenv("MODEL_NAME", "nous-hermes")
+
 
 settings = Settings()
