@@ -21,8 +21,6 @@
   - [Frontend Setup](#frontend-setup)
 - [API Endpoints & Usage](#-api-endpoints--usage)
 - [Next Steps & Improvements](#-next-steps--improvements)
-- [License](#-license)
-- [Contact](#-contact)
 
 ---
 
