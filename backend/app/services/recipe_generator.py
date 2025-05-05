@@ -28,7 +28,12 @@ def generate_recipe_from_ingredients(
         cuisine = preferred_cuisine
     else:
         detected = detect_cuisine(ingredients)
-        cuisine = detected if detected.lower() != "international" else None
+        if isinstance(detected, list):
+            cuisine = detected[0] if detected else None
+        elif isinstance(detected, str):
+            cuisine = detected if detected.lower() != "international" else None
+        else:
+            cuisine = None
 
     # 2) Build human-readable constraints
     constraints: List[str] = []
@@ -111,7 +116,7 @@ def generate_recipe_from_ingredients(
         found = detect_allergens(parsed.get("ingredients", []), excluded_allergens)
         if found:
             return {
-                "error": f"⚠️ Recipe contains excluded allergens: {', '.join(found)}",
+                "error": f" Recipe contains excluded allergens: {', '.join(found)}",
                 "recipe": parsed,
             }
 
