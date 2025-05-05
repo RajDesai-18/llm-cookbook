@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+scikit-learn
+pandas
+numpy
+openai
+transformers
+torch
+python-dotenv
+faiss-cpu
