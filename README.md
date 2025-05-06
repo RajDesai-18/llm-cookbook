@@ -49,7 +49,7 @@
 
 ## YouTube Demo:
 
-[https://youtu.be/dU8jeaVeWb0](#https://youtu.be/dU8jeaVeWb0)
+[https://youtu.be/dU8jeaVeWb0](https://youtu.be/dU8jeaVeWb0)
 
 ---
 
