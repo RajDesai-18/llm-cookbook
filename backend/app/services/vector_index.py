@@ -1,5 +1,3 @@
-# backend/app/services/vector_index.py
-
 import faiss
 import pickle
 import pandas as pd
@@ -15,16 +13,9 @@ class RecipeVectorIndex:
         # 1) Load the raw CSV
         self.df = pd.read_csv(settings.DATA_PATH)
 
-        # 2) Convert any string‑lists into real Python lists
         for col in ("ingredients", "instructions"):
             self.df[col] = self.df[col].apply(self._parse_list_column)
 
-        # 3) Ensure these three columns always exist (even if empty)
-        for col in ("prep_time", "cook_time", "servings"):
-            if col not in self.df.columns:
-                self.df[col] = None
-
-        # 4) Load/embed/index
         self.embed_model = SentenceTransformer("all-MiniLM-L6-v2")
         self.index_path = settings.EMBEDDING_CACHE_PATH
         self.embeddings = None
@@ -61,7 +52,27 @@ class RecipeVectorIndex:
         if D[0][0] > 1.5:
             return []
 
-        # now safely select columns including the three defaults
+        # pull out the top‐k rows
+        hits = self.df.iloc[I[0]].copy().reset_index(drop=True)
+
+        # map your “predicted” CSV columns into the public fields
+        # (replace these names if your CSV uses slightly different headers)
+        if "predicted_prep_time_rounded" in hits.columns:
+            hits["prep_time"] = hits["predicted_prep_time_rounded"]
+        else:
+            hits["prep_time"] = None
+
+        if "predicted_cook_time_rounded" in hits.columns:
+            hits["cook_time"] = hits["predicted_cook_time_rounded"]
+        else:
+            hits["cook_time"] = None
+
+        if "estimated_servings" in hits.columns:
+            hits["servings"] = hits["estimated_servings"]
+        else:
+            hits["servings"] = None
+
+        # finally select exactly the six fields we expose
         cols = [
             "title",
             "ingredients",
@@ -70,5 +81,4 @@ class RecipeVectorIndex:
             "cook_time",
             "servings",
         ]
-        subset = self.df.iloc[I[0]][cols]
-        return subset.to_dict(orient="records")
+        return hits[cols].to_dict(orient="records")
