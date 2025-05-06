@@ -119,11 +119,9 @@ if search_clicked:
         if results:
             st.success(f"Found {len(results)} matching recipes:")
             for r in results:
-                with st.expander(r["##title"]):
+                with st.expander(r["title"]):
                     st.markdown(
-                        f"**Prep:** {r.get('prep_time','N/A')} &nbsp; "
-                        f"**Cook:** {r.get('cook_time','N/A')} &nbsp; "
-                        f"**Serves:** {r.get('servings','N/A')}"
+                        f"Preparation Time: {str(r.get('prep_time', 'N/A'))}   Serves: {str(r.get('servings', 'N/A'))}"
                     )
                     st.subheader("Ingredients")
                     for ing in r["ingredients"]:

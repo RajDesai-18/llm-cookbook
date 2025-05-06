@@ -42,7 +42,6 @@ models/
 *.ipynb
 
 # Data Artifacts
-*.csv
 *.tsv
 *.json
 *.db
