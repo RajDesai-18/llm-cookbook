@@ -39,7 +39,6 @@ models/
 
 # Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb
 
 # Data Artifacts
 *.tsv

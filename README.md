@@ -47,7 +47,14 @@
 
 ---
 
+## YouTube Demo:
+
+[https://youtu.be/dU8jeaVeWb0](#https://youtu.be/dU8jeaVeWb0)
+
+---
+
 ## 🗂 Folder Structure
+
 ```
 llm\_cookbook/
 ├─ backend/
@@ -77,6 +84,7 @@ llm\_cookbook/
 ├─ .gitignore
 └─ README.md
 ```
+
 ---
 
 ## ⚙ Getting Started
@@ -91,7 +99,7 @@ Install Ollama and pull the required model:
 
 ```bash
 ollama pull nous-hermes
-````
+```
 
 ### Clone & Install
 
@@ -155,7 +163,7 @@ POST /parse-ingredients
 **Response:**
 
 ```json
-{"parsed": ["tomatoes", "salt"]}
+{ "parsed": ["tomatoes", "salt"] }
 ```
 
 ### 🔹 Recipe Search
@@ -210,12 +218,12 @@ POST /recipes/generate
 
 ## 🎯 Next Steps & Improvements
 
-* Ingredient Substitute Feature: Expand the existing ingredient substitution logic to suggest multiple alternatives and improve allergen substitution handling.
-* Full-Fledged Frontend: Implement a comprehensive and responsive frontend using **React.js**, **TypeScript**, and **Tailwind CSS** for a richer user experience.
-* Add unit and integration tests.
-* Conduct user studies for usability feedback.
-* Improve error handling and logging mechanisms.
-* CI/CD integration and Docker containerization.
-* Fine-tune the LLM on custom recipe data.
+- Ingredient Substitute Feature: Expand the existing ingredient substitution logic to suggest multiple alternatives and improve allergen substitution handling.
+- Full-Fledged Frontend: Implement a comprehensive and responsive frontend using **React.js**, **TypeScript**, and **Tailwind CSS** for a richer user experience.
+- Add unit and integration tests.
+- Conduct user studies for usability feedback.
+- Improve error handling and logging mechanisms.
+- CI/CD integration and Docker containerization.
+- Fine-tune the LLM on custom recipe data.
 
 ---
